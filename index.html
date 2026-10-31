@@ -1,477 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mostafa Elhassany — Email Marketing Operations Manager</title>
+<meta name="description" content="Email Marketing Operations Manager for DTC and e-commerce brands. Klaviyo, lifecycle flows, retention, deliverability.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #fafaf8;
-    --panel: #ffffff;
-    --ink: #111111;
-    --ink-soft: #333333;
-    --muted: #767676;
-    --gold: #B8902E;
-    --gold-soft: #d9b869;
-    --rule: #e2ddd3;
-    --shadow: 0 20px 60px -20px rgba(17,17,17,0.18);
-    --serif: 'Playfair Display', Georgia, serif;
-    --sans: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+:root{
+  --bg:#fafaf8; --panel:#ffffff; --ink:#111111; --ink-soft:#333333; --muted:#767676;
+  --gold:#B8902E; --gold-soft:#d9b869; --rule:#e2ddd3;
+  --shadow:0 20px 60px -20px rgba(17,17,17,0.18);
+  --role:var(--ink-soft); --on-gold:#111111;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e0d0b; --panel:#171512; --ink:#f3efe7; --ink-soft:#d8d2c4; --muted:#9a9284;
+    --gold:#d9b869; --gold-soft:#b8902e; --rule:#322d24;
+    --shadow:0 20px 60px -20px rgba(0,0,0,0.6); --role:var(--gold);
+    color-scheme:dark;
   }
-
-  :root:not([data-theme="light"]) {
-    @media (prefers-color-scheme: dark) {
-      --bg: #0e0d0b;
-      --panel: #171512;
-      --ink: #f3efe7;
-      --ink-soft: #d8d2c4;
-      --muted: #9a9284;
-      --gold: #d9b869;
-      --gold-soft: #b8902e;
-      --rule: #322d24;
-      --shadow: 0 20px 60px -20px rgba(0,0,0,0.6);
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #0e0d0b;
-    --panel: #171512;
-    --ink: #f3efe7;
-    --ink-soft: #d8d2c4;
-    --muted: #9a9284;
-    --gold: #d9b869;
-    --gold-soft: #b8902e;
-    --rule: #322d24;
-    --shadow: 0 20px 60px -20px rgba(0,0,0,0.6);
-  }
-
-  * { box-sizing: border-box; }
-
-  html, body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink-soft);
-    font-family: var(--sans);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  body {
-    padding: clamp(20px, 5vw, 64px) clamp(14px, 4vw, 24px) 80px;
-  }
-
-  .sheet {
-    max-width: 860px;
-    margin: 0 auto;
-    background: var(--panel);
-    box-shadow: var(--shadow);
-    border-radius: 4px;
-    padding: clamp(28px, 6vw, 72px) clamp(24px, 7vw, 88px);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .sheet::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-soft) 50%, var(--gold));
-  }
-
-  header.hero {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 20px;
-    padding-bottom: 22px;
-    margin-bottom: 26px;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .kicker {
-    font-family: var(--sans);
-    font-weight: 900;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 10px;
-  }
-
-  h1.name {
-    font-family: var(--serif);
-    font-weight: 900;
-    font-size: clamp(34px, 6vw, 52px);
-    line-height: 1.02;
-    color: var(--ink);
-    margin: 0 0 8px;
-    letter-spacing: -0.01em;
-  }
-
-  .role {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(15px, 2.4vw, 19px);
-    color: var(--gold);
-    margin: 0 0 12px;
-  }
-
-  .contact {
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 14px;
-  }
-
-  .contact a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; }
-  .contact a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-
-  h2.section {
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: clamp(18px, 2.6vw, 22px);
-    color: var(--ink);
-    margin: 34px 0 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  h2.section::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-  }
-
-  section:first-of-type h2.section { margin-top: 0; }
-
-  p.summary {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    max-width: 68ch;
-  }
-
-  .comp-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 18px 28px;
-  }
-
-  .comp-item .lbl {
-    font-weight: 900;
-    font-size: 10.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .comp-item .vals {
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-
-  .job { margin-bottom: 26px; }
-  .job:last-child { margin-bottom: 0; }
-
-  .jobhead {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 6px 16px;
-  }
-
-  .jtitle {
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: 17px;
-    color: var(--ink);
-  }
-
-  .jdate {
-    font-size: 12.5px;
-    color: var(--gold);
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .jmeta {
-    font-size: 12.5px;
-    color: var(--muted);
-    margin: 2px 0 8px;
-  }
-
-  .jintro {
-    font-size: 13.5px;
-    font-style: italic;
-    color: var(--muted);
-    margin: 0 0 10px;
-  }
-
-  ul.blt {
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
-  }
-
-  ul.blt li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 7px;
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-
-  ul.blt li::before {
-    content: "";
-    position: absolute;
-    left: 2px;
-    top: 8px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-
-  .results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-  }
-
-  .result {
-    border-left: 3px solid var(--gold);
-    background: color-mix(in srgb, var(--gold) 5%, transparent);
-    border-radius: 0 6px 6px 0;
-    padding: 12px 16px;
-  }
-
-  .result .rtitle {
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-
-  .result .rdesc {
-    font-size: 12.5px;
-    line-height: 1.55;
-    color: var(--muted);
-  }
-
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 10px 24px;
-  }
-
-  .tools-row {
-    font-size: 13.5px;
-    line-height: 1.6;
-  }
-  .tools-row .lbl2 { font-weight: 700; color: var(--ink); }
-  .tools-row .vals2 { color: var(--ink-soft); }
-
-  .certs {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 8px 20px;
-  }
-  .certs li {
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    padding-left: 18px;
-    position: relative;
-  }
-  .certs li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-weight: 900;
-    font-size: 12px;
-  }
-
-  footer.foot {
-    margin-top: 40px;
-    padding-top: 18px;
-    border-top: 1px solid var(--rule);
-    text-align: center;
-    font-size: 12.5px;
-    color: var(--muted);
-  }
-  footer.foot a { color: var(--muted); text-decoration: none; }
-  footer.foot a:hover { color: var(--gold); }
-
-  @media print {
-    body { padding: 0; background: #fff; }
-    .sheet { box-shadow: none; border-radius: 0; max-width: 100%; }
-  }
-
-  @media (max-width: 520px) {
-    header.hero { flex-direction: column; align-items: flex-start; }
-  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e0d0b; --panel:#171512; --ink:#f3efe7; --ink-soft:#d8d2c4; --muted:#9a9284;
+  --gold:#d9b869; --gold-soft:#b8902e; --rule:#322d24;
+  --shadow:0 20px 60px -20px rgba(0,0,0,0.6); --role:var(--gold);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{color-scheme:light dark;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--sans);overflow-wrap:break-word}
+.actions{max-width:820px;margin:16px auto 0;padding:0 16px;display:flex;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;font:500 14px var(--sans);background:var(--gold);color:var(--on-gold);text-decoration:none;border-radius:4px}
+.btn:hover{background:var(--gold-soft)}
+.sheet{max-width:820px;margin:16px auto 40px;background:var(--panel);padding:clamp(24px,6vw,60px);border-top:6px solid var(--gold);box-shadow:var(--shadow)}
+header{padding-bottom:18px;border-bottom:1px solid var(--rule)}
+h1{font:700 clamp(30px,6vw,40px)/1.1 var(--serif);margin:0;letter-spacing:-.01em}
+.role{font:600 clamp(15px,2.6vw,17px)/1.35 var(--sans);color:var(--role);margin:8px 0 0;max-width:none}
+.contact{display:flex;flex-wrap:wrap;gap:4px 20px;margin:12px 0 0;max-width:none;font-size:13.5px;color:var(--muted)}
+.contact a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+.contact a:hover{border-color:var(--gold)}
+h2{font:700 20px/1.2 var(--serif);margin:34px 0 12px;color:var(--ink)}
+p{margin:0 0 10px;max-width:68ch}
+.results{list-style:none;margin:0;padding:0;border-left:3px solid var(--gold)}
+.results li{padding:2px 0 14px 18px;max-width:70ch}
+.results strong{font-weight:600}
+.job{margin:0 0 22px}
+.job-head{display:flex;justify-content:space-between;gap:2px 16px;flex-wrap:wrap;align-items:baseline}
+.job h3{font:600 16px/1.35 var(--sans);margin:0}
+.job .when{font-size:13.5px;color:var(--muted)}
+.job .org{font-size:14px;color:var(--muted);margin:0 0 6px;max-width:none}
+ul.b{margin:0;padding-left:18px}
+ul.b li{margin:0 0 5px;max-width:70ch}
+dl{margin:0;display:grid;grid-template-columns:170px 1fr;gap:8px 16px}
+dt{font-weight:600}
+dd{margin:0;color:var(--ink-soft)}
+.certs{margin:0;padding-left:18px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (max-width:720px){
+  .actions{justify-content:stretch}
+  .btn{width:100%;justify-content:center}
+  .sheet{margin:12px 0 0;border-top-width:4px}
+  body{font-size:15px}
+}
+@media (max-width:560px){
+  dl{grid-template-columns:1fr;gap:0}
+  dt{margin-top:10px}
+  dd{margin-bottom:2px}
+  .job .when{white-space:normal}
+  h2{margin-top:28px}
+}
+@page{size:A4;margin:9mm 14mm}
+@media print{
+  :root:root:root{--bg:#ffffff;--panel:#ffffff;--ink:#111111;--ink-soft:#333333;--muted:#767676;--gold:#B8902E;--gold-soft:#d9b869;--rule:#e2ddd3;--role:#333333;color-scheme:light}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff;font-size:10.2px;line-height:1.4}
+  .actions{display:none}
+  .sheet{margin:0;padding:0;border-top:0;max-width:none;box-shadow:none}
+  h1{font-size:28px}
+  .role{margin-top:4px}
+  .role{font-size:13px}
+  .contact{font-size:10px;gap:2px 14px;margin-top:8px}
+  h2{font-size:14.5px;margin:10px 0 5px;break-after:avoid}
+  .job{break-inside:avoid;margin-bottom:8px}
+  ul.b li{margin-bottom:2px}
+  .job .org{margin-bottom:3px}
+  .job h3{font-size:12px}
+  .job .when,.job .org{font-size:10.5px}
+  .results li{padding-bottom:5px}
+  header{padding-bottom:10px}
+  dl{break-inside:avoid}
+  .certs{list-style:none;padding:0}
+  .certs li{display:inline}
+  .certs li+li::before{content:"  |  ";color:var(--muted)}
+  dl{grid-template-columns:130px 1fr;gap:3px 12px}
+  a{color:inherit}
+}
 </style>
 </head>
 <body>
-  <div class="sheet">
+<div class="actions"><a class="btn" href="Mostafa-Elhassany-Resume.pdf" download="Mostafa-Elhassany-Resume.pdf">Download PDF</a></div>
+<main class="sheet">
+  <header>
+    <h1>Mostafa Elhassany</h1>
+    <p class="role">Email Marketing Operations Manager, Klaviyo Lifecycle &amp; Retention</p>
+    <p class="contact"><span>Agadir, Morocco (remote)</span><a href="mailto:hello@wealthyemail.com">hello@wealthyemail.com</a><a href="tel:+212687287799">+212 687 287 799</a><a href="https://www.linkedin.com/in/elhassany/">linkedin.com/in/elhassany</a></p>
+  </header>
 
-    <header class="hero">
-      <div>
-        <p class="kicker">Email Marketing Operations Manager</p>
-        <h1 class="name">Mostafa Elhassany</h1>
-        <p class="role">Email Marketing Operations Manager · Lifecycle Strategy · E&#8209;commerce</p>
-        <div class="contact">
-          <span>Agadir, Morocco</span>
-          <span>·</span>
-          <a href="mailto:hello@wealthyemail.com">hello@wealthyemail.com</a>
-          <span>·</span>
-          <a href="tel:+212687287799">+212 687 287 799</a>
-          <span>·</span>
-          <a href="https://wealthyemail.com" target="_blank" rel="noopener">wealthyemail.com</a>
-        </div>
-      </div>
-    </header>
+  <section>
+    <h2>Summary</h2>
+    <p>I run Klaviyo email programs for DTC and e-commerce brands in the US and UK. Over 3+ years I have owned lifecycle flows, campaigns, segmentation, deliverability and reporting across multiple accounts in remote agency teams. I keep work on schedule and tie every change to performance metrics.</p>
+    <p>Available 40 hours a week, working GMT/UTC and EST hours.</p>
+  </section>
 
-    <section>
-      <h2 class="section">Professional Summary</h2>
-      <p class="summary">Email Marketing Operations Manager and Lifecycle Strategist with 3+ years of experience managing email programs for e-commerce and DTC brands. Experienced in end-to-end account ownership across Klaviyo operations, lifecycle strategy, campaigns, flows, segmentation, testing, deliverability, reporting, and optimization. Have worked independently and within remote agency environments, managing multiple accounts and coordinating with clients and collaborators to keep projects organized, on schedule, and performance-focused.</p>
-    </section>
+  <section>
+    <h2>Selected work</h2>
+    <ul class="results">
+      <li><strong>DTC skincare brand:</strong> fixed deliverability, built the Klaviyo lifecycle flows and corrected the Shopify integration.</li>
+      <li><strong>A/B test, Alpha60:</strong> tested subject line personalization against a standard subject line across campaign sends.</li>
+      <li><strong>Deliverability, Jovie:</strong> set up SPF, DKIM and DMARC authentication and monitored list hygiene.</li>
+    </ul>
+  </section>
 
-    <section>
-      <h2 class="section">Core Competencies</h2>
-      <div class="comp-grid">
-        <div class="comp-item"><span class="lbl">Account Management</span><span class="vals">Multi-account ownership · Client communication · Account planning · Reporting · Prioritization</span></div>
-        <div class="comp-item"><span class="lbl">Lifecycle Operations</span><span class="vals">Customer journeys · Segmentation · Flow strategy · Retention · Repeat purchase · Win-back</span></div>
-        <div class="comp-item"><span class="lbl">Campaign Operations</span><span class="vals">Campaign calendars · Briefs · Copy · Design coordination · QA · Deployment · Approvals</span></div>
-        <div class="comp-item"><span class="lbl">Flow &amp; Automation</span><span class="vals">Welcome · Abandoned cart · Browse abandonment · Post-purchase · Cross-sell · Win-back · Sunset</span></div>
-        <div class="comp-item"><span class="lbl">Optimization &amp; Reporting</span><span class="vals">A/B testing · KPI monitoring · Performance analysis · Revenue tracking · Recommendations</span></div>
-        <div class="comp-item"><span class="lbl">Deliverability</span><span class="vals">SPF · DKIM · DMARC · Suppression · List hygiene · Sender reputation · Inbox placement</span></div>
-      </div>
-    </section>
+  <section>
+    <h2>Experience</h2>
 
-    <section>
-      <h2 class="section">Professional Experience</h2>
-
-      <div class="job">
-        <div class="jobhead"><span class="jtitle">Lifecycle Email &amp; Retention Operations Manager</span><span class="jdate">Jan 2026 – Present</span></div>
-        <div class="jmeta">WealthyEmail · Remote</div>
-        <div class="jintro">Portfolio agency working directly with e-commerce and DTC brands on lifecycle email and retention marketing.</div>
-        <ul class="blt">
-          <li>Own end-to-end email marketing operations across strategy, automated flows, campaigns, segmentation, deliverability, testing, and performance reporting.</li>
-          <li>Manage Shopify and Klaviyo accounts from initial audit and technical setup through ongoing optimization.</li>
-          <li>Architect and optimize high-converting lifecycle flows (Welcome, Cart Abandonment, Post-Purchase, Win-back, Sunset).</li>
-          <li>Lead campaign execution: plan editorial calendars, coordinate copy/creative, manage QA, and review performance metrics to guide optimization.</li>
-          <li>Worked with international fashion brands including Jovie, SockSeason, and Alpha60 across US and UK markets.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="jobhead"><span class="jtitle">Account Executive</span><span class="jdate">Aug 2025 – Dec 2025</span></div>
-        <div class="jmeta">Major Players · Remote</div>
-        <div class="jintro">Managed client email marketing accounts, execution timelines, campaign requirements, and cross-account reporting within a remote environment.</div>
-        <ul class="blt">
-          <li>Managed client email marketing activities, execution timelines, campaign requirements, and cross-account reporting.</li>
-          <li>Coordinated between clients and internal teams to maintain workflow organization and meet key project deliverables on schedule.</li>
-          <li>Monitored ongoing campaign performance and supported A/B testing and account optimization strategies.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="jobhead"><span class="jtitle">Klaviyo Technician</span><span class="jdate">Jan 2025 – Jun 2025</span></div>
-        <div class="jmeta">Email Club · Remote</div>
-        <div class="jintro">Managed technical Klaviyo execution and infrastructure across agency clients.</div>
-        <ul class="blt">
-          <li>Managed the technical side of Klaviyo accounts, overseeing deliverability, flows, campaigns, segmentation, and rigorous QA.</li>
-          <li>Coordinated with internal teams while independently owning assigned tasks and resolving technical account issues.</li>
-          <li>Maintained high quality standards, ensuring all campaign assets and automated lifecycle flows were fully optimized prior to execution.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="jobhead"><span class="jtitle">Email Marketing Specialist</span><span class="jdate">Aug 2024 – Oct 2024</span></div>
-        <div class="jmeta">Warmlead · Remote</div>
-        <div class="jintro">Supported Klaviyo email operations for e-commerce clients within an agency environment.</div>
-        <ul class="blt">
-          <li>Supported Klaviyo email operations for e-commerce clients, executing campaigns, segmentations, and performance tracking.</li>
-          <li>Assisted with editorial planning, deliverability monitoring, and lifecycle optimizations under strict agency quality standards.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="jobhead"><span class="jtitle">Selected Client Projects</span><span class="jdate">Feb 2023 – May 2024</span></div>
-        <div class="jmeta">Upwork · Remote</div>
-        <div class="jintro">Delivered email marketing and deliverability projects for DTC, e-commerce, and B2B clients across US and UK markets.</div>
-        <ul class="blt">
-          <li><strong>Wellness Productions:</strong> Technical deliverability setup and sender reputation improvements.</li>
-          <li><strong>FMS Advisory / Festina Manly-Spain:</strong> Email deliverability setup and infrastructure optimization in GoHighLevel.</li>
-          <li><strong>Anthony Tadle:</strong> HubSpot email marketing setup, segmentation, and workflow support.</li>
-          <li><strong>E-Commerce Technical Setup:</strong> Klaviyo migrations, DNS authentication (SPF, DKIM, DMARC), and custom HTML development.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="section">Selected Experience &amp; Results</h2>
-      <div class="results-grid">
-        <div class="result">
-          <div class="rtitle">+34% Email Revenue in 60 Days</div>
-          <div class="rdesc">DTC skincare brand · Deliverability improvements · Klaviyo lifecycle implementation · Shopify integration corrections</div>
-        </div>
-        <div class="result">
-          <div class="rtitle">End-to-End Account Ownership</div>
-          <div class="rdesc">Managed email operations across strategy, campaigns, flows, segmentation, deliverability, testing, reporting, and optimization.</div>
-        </div>
-        <div class="result">
-          <div class="rtitle">Multi-Account Operations</div>
-          <div class="rdesc">Experience working across multiple e-commerce accounts in remote and agency environments, coordinating priorities, deadlines, deliverables, and performance reporting.</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="section">Tools &amp; Platforms</h2>
-      <div class="tools-grid">
-        <div class="tools-row"><span class="lbl2">Email &amp; CRM: </span><span class="vals2">Klaviyo · HubSpot · Mailchimp</span></div>
-        <div class="tools-row"><span class="lbl2">E-commerce: </span><span class="vals2">Shopify</span></div>
-        <div class="tools-row"><span class="lbl2">Project Management: </span><span class="vals2">ClickUp · Asana · Monday</span></div>
-        <div class="tools-row"><span class="lbl2">Design &amp; Collaboration: </span><span class="vals2">Figma</span></div>
-        <div class="tools-row"><span class="lbl2">Deliverability: </span><span class="vals2">SPF · DKIM · DMARC · DNS · Sender Reputation</span></div>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="section">Certifications</h2>
-      <ul class="certs">
-        <li>Klaviyo Product Certification</li>
-        <li>HubSpot Inbound Marketing Certification</li>
-        <li>Mailchimp Email Marketing Certification</li>
-        <li>Google Analytics 4 Certification</li>
+    <article class="job">
+      <div class="job-head"><h3>Operations Manager, Lifecycle &amp; Retention</h3><span class="when">Jan 2026 – Present</span></div>
+      <p class="org">WealthyEmail · Remote · Lifecycle email agency for DTC and e-commerce brands</p>
+      <ul class="b">
+        <li>Run email operations for DTC and e-commerce brands, including Jovie, SockSeason and Alpha60, across US and UK markets: strategy, flows, campaigns, segmentation, deliverability and reporting.</li>
+        <li>Audit and set up Shopify and Klaviyo accounts, then own optimization month to month.</li>
+        <li>Rebuilt Welcome, Abandoned Cart, Post-Purchase, Win-back and Sunset flows.</li>
+        <li>Plan campaign calendars and manage copy, design, QA and client approvals, keeping every campaign on schedule.</li>
+        <li>Report to clients on performance and recommend the next test to run.</li>
       </ul>
-    </section>
+    </article>
 
-    <footer class="foot">
-      <a href="mailto:hello@wealthyemail.com">hello@wealthyemail.com</a> &nbsp;·&nbsp;
-      <a href="tel:+212687287799">+212 687 287 799</a> &nbsp;·&nbsp;
-      <a href="https://wealthyemail.com" target="_blank" rel="noopener">wealthyemail.com</a>
-    </footer>
+    <article class="job">
+      <div class="job-head"><h3>Account Executive</h3><span class="when">Aug 2025 – Dec 2025</span></div>
+      <p class="org">Major Players · Remote</p>
+      <ul class="b">
+        <li>Managed 6 client email accounts: timelines, campaign requirements and cross-account reporting.</li>
+        <li>Coordinated between clients and the internal team to keep campaigns on schedule.</li>
+        <li>Supported A/B tests and account optimization.</li>
+      </ul>
+    </article>
 
-  </div>
+    <article class="job">
+      <div class="job-head"><h3>Klaviyo Technician</h3><span class="when">Jan 2025 – Jun 2025</span></div>
+      <p class="org">Email Club · Remote</p>
+      <ul class="b">
+        <li>Handled technical Klaviyo work for 5 agency clients: flows, campaigns, segmentation, deliverability and QA.</li>
+        <li>Resolved account issues independently.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head"><h3>Email Marketing Specialist</h3><span class="when">Aug 2024 – Oct 2024</span></div>
+      <p class="org">Warmlead · Remote</p>
+      <ul class="b">
+        <li>Executed campaigns, segmentation and performance tracking for e-commerce clients, and supported deliverability monitoring and editorial planning.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head"><h3>Freelance Email Specialist</h3><span class="when">Feb 2023 – May 2024</span></div>
+      <p class="org">Upwork · Remote</p>
+      <ul class="b">
+        <li>Klaviyo migrations, DNS authentication (SPF, DKIM, DMARC), deliverability fixes and custom HTML for US and UK e-commerce clients.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl>
+      <dt>Lifecycle &amp; retention</dt><dd>Welcome, abandoned cart, browse abandonment, post-purchase, cross-sell, win-back, sunset, repeat purchase</dd>
+      <dt>Operations</dt><dd>Multi-account ownership, campaign calendars, briefs, QA, approvals, client reporting</dd>
+      <dt>Optimization</dt><dd>A/B testing, segmentation, KPI tracking, recommendations</dd>
+      <dt>Deliverability</dt><dd>SPF, DKIM, DMARC, suppression, list hygiene, sender reputation, inbox placement</dd>
+      <dt>Tools</dt><dd>Klaviyo, Shopify, Claude, Figma, ClickUp, Asana, Monday</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Certifications</h2>
+    <ul class="certs">
+      <li>Klaviyo Product Certification</li>
+      <li>Google Analytics 4 Certification</li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>
